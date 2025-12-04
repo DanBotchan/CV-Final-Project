@@ -35,10 +35,10 @@ We suggested 3 ways to get the necessary data.
 1. We thought about record our self while playing, using two cameras: one that records from the Bird-Eye-View perspective, and the other one from the side of the table. The problem with this suggestion was to find a place with snooker during the Corona pandemic and also to properly record from bird-eye-view, without the necessary equipment.
 
 2. The idea of using a video game and synthetic data is common in computer vision and has pros and cons. One of the biggest pros is that it enables us to control the properties of the data and the amount. The con when using synthetic data is the question if the same algorithm and parameters will also work when moving to real data. For the limitations of the academic project, we thought using a video game as our data will be sufficient and will allow us to get both regular view and BEV view for each play.
-[!Image1](images/image_1.png)
+[!Image1](./images/image_1.png)
 
 3. Our last idea was to try and search for a video of some official game, in the hope we will find a replay of at least one game move, from both angles - regular and BEV. We ended up finding two videos of the same game, being recorded fully, from those two perspectives, so we chose to use this YouTube video as our data.
-[!Image2](images/image_4.png)[!Image3](images/image_3.png)
+[!Image2](./images/image_4.png)[!Image3](./images/image_3.png)
 
 
 ## The Algorithm
@@ -55,7 +55,7 @@ The third assumption – We made sure that in the videos we use the player almos
 
 ### 2. Detecting the table
 We wanted to minimize the area where we are looking for edges, only to the exact area of the table. To do so, we change the first frame of the video from RGB (BGR in cv2) to HSV color space. The hue property of the HSV is less sensitive to light's intensity and therefore, it is easier to use this property to output a mask of all the green components in the frame. Then we used stats about the connected components and search for the component with maximum size to get the exact mask of the table. After we get the mask, we can use the minimum and maximum value of each index in the x-direction and y-direction to find the cropping of the table.
-[!Image2](images/image_2.png)
+[!Image2](./images/image_2.png)
 
 ### 3. Identify the border Lines
 To find the borderlines, we find each border separately.
@@ -78,11 +78,11 @@ Using those matching points we can compute the projection matrix from the table 
 
 ## Results
 1. Clip 1 - https://youtu.be/p6EngngfAWk
-[!Image5](images/image_5.png)
+[!Image5](./images/image_5.png)
 2. Clip 2 - https://youtu.be/mX6_5D3GzrU
-[!Image6](images/image_6.png)
+[!Image6](./images/image_6.png)
 3. Clip 3 - https://youtu.be/V50s4olE4_4
-[!Image7](images/image_7.png)
+[!Image7](./images/image_7.png)
 ## Conclusion & Future work
 During the project we experimented with various of famous CV algorithms such as Canny edge detection, Hough transform to detect lines and circles, blub detection, dilation, Homogenous projection etc. Based solely on CV algorithms we managed to get decent tools for game analysis and broadcasting. Tools that can be further improve in future work.
 
